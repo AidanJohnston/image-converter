@@ -5,6 +5,4 @@ ESOF 4557 Group Project
 
 FILE TYPES
 
-- .bmp
-- .png
-- .jpeg / .jpg
+- convert from jpeg to bmp
