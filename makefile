@@ -1,5 +1,5 @@
 # Complier
-CC := gcc
+CC := g++
 
 # Define Directories
 SRC_DIR := src
@@ -10,7 +10,7 @@ BIN_DIR := bin
 EXE := $(BIN_DIR)/main
 
 # Collect all src files
-SRC := $(wildcard $(SRC_DIR/*.cpp))
+SRC := $(wildcard $(SRC_DIR)/*.cpp)
 
 # List object files
 OBJ := $(SRC:$(SRC_DIR)/%.c = $(OBJ_DIR)/%.o)
@@ -18,23 +18,26 @@ OBJ := $(SRC:$(SRC_DIR)/%.c = $(OBJ_DIR)/%.o)
 # Complier Flags
 CXXFLAGS = -Iinclude -MMD -MP
 CFLAGS = -Wall
-LDFLAGS = -lm
+LDLIBS = -lm
+LDFLAGS  := -Llib
 
 .PHONY: all clean
 
 all: $(EXE)
 
-
 # Create Object Files
-#$(EXE): $(OBJ) | $(BIN_DIR)
-#	$(CC) $(CXXFLAGS) $(CFLAGS) $^ -o $@
+$(EXE): $(OBJ) | $(BIN_DIR)
+	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
 # Create executable from object files
-#$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-#	$(CC) $(LDFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CXXFLAGS) $(CFLAGS) -c $< -o $@
 
-#$(BIN_DIR) $(OBJ_DIR):
-#	mkdir -p $@
+$(BIN_DIR) $(OBJ_DIR):
+	mkdir -p $@
 
 clean:
-	@rm -rv $(BIN_DIR) $(OBJ_DIR)
+	@rm -rfv $(BIN_DIR) $(OBJ_DIR)
+
+run: 
+	./bin/main $(arg)
