@@ -15,9 +15,10 @@ class JPEG {
         // Vars
         bytes data;
 
+        // App Info
+
         // Functions
         int parse();
-        int parse_APP();
         int parse_DQT();
         int parse_SOF();
         int parse_DHT();

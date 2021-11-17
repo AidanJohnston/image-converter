@@ -1,6 +1,6 @@
 // main.cpp
 #include <stdio.h>
-#include "../include/jpeg.h"
+#include "../include/JPEG.h"
 
 int main(int argc, char* argv[]) {
 
