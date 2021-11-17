@@ -35,67 +35,21 @@ JPEG::JPEG(std::string filename) {
 }
 
 int JPEG::parse() {
-
+    int length = 0;
     for(int i = 0; i < this->data.size(); i++) {
-
-        
 
         if (this->data[i] == 0xFF) {
             
-            i++;
+            length = (data[i + 2] << 8) + (data[i + 3]);
 
-            switch(this->data[i]) {
+            switch(this->data[i + 1]) {
                 
                 case 0xD8:
                     printf("0xFFD8 - SOI - Start of Image\n");
                     break;
                 case 0xE0:
-                    printf("0xFFE0 - APP0\n");
-
-                    /*  Application Data
-                    *   
-                    *   marker/length   2 bytes  0xFFE0 / length
-                    * 
-                    *   Identifier      5 bytes  ("JFIF\000" = 0x4a46494600)
-                    *   MajorVersion    1 byte   major version (e.g. 0x01)
-                    *   MinorVersion    1 byte   minor version (e.g. 0x01 or 0x02)
-                    *   Units           1 byte   units (0: densities give aspect ratio
-                    *                                   1: density values are dots per inch
-                    *                                   2: density values are dots per cm)
-                    *   Xdensity        2 bytes  horizontal pixel density
-                    *   Ydensity        2 bytes  vertical pixel density
-                    *   Xthumbnail      1 byte   thumbnail horizontal pixel count
-                    *   Ythumbnail      1 byte   thumbnail vertical pixel count
-                    *   ThumbnailData   3n bytes thumbnail image (n = Xthumbnail * Ythumbnail)
-                    */
-
-                    // length
-                    i++;
-                    printf("\tlength: %d\n", (this->data[i] << 8) + (this->data[i+1]));
-
-                    // Identifier
-                    i += 2;
-                    printf("\tIdentifier: %c%c%c%c%c\n", this->data[i], this->data[i+1], this->data[i+2], this->data[i+3], this->data[i+4]);
-
-                    // major / minor version
-                    i += 5;
-                    printf("\tVersion: %d.%d\n", this->data[i], this->data[i+1]);
-
-                    // units
-                    i += 2;
-                    printf("\tUnits: %d\n", this->data[i]);
-
-                    // xyDensity
-                    i += 1;
-                    printf("\tDensity: %dx%d\n", (this->data[i] << 8) + (this->data[i+1]), (this->data[i+2] << 8) + (this->data[i+3]));
-
-                    // Thumbnail
-                    i += 4;
-                    printf("\tThumbnail: %dx%d\n", this->data[i], this->data[i+1]);
-
-                    // skip the thumbnail
-                    i += 3 * this->data[i] * this->data[i+1];
-
+                    // pass from header to end of application frame data
+                    this->application = Application(bytes(data.begin() + i, data.begin() + i + length));
                     break;
                 case 0xC0:
                     printf("Start of Frame 0\n");

@@ -1,4 +1,4 @@
-// // jpeg.h
+// Application.h
 #ifndef __APPLICATION_H_
 #define __APPLICATION_H_
 #include "types.h"
@@ -20,6 +20,7 @@ class Application {
     public:
 
         Application(bytes data);
+        Application() = default;
 
 };
 
