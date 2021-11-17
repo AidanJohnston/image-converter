@@ -1,5 +1,8 @@
-#ifndef __INTTYPES_H_
-#define __INTTYPES_H_
+// types.h
+#ifndef __TYPES_H_
+#define __TYPES_H_
+
+#include <vector>
 
 typedef unsigned char  u8;
 typedef unsigned short u16;
@@ -9,4 +12,7 @@ typedef signed char  s8;
 typedef signed short s16;
 typedef signed int   s32;
 
-#endif//__INTTYPES_H_
+typedef std::vector<u8> bytes;
+
+
+#endif//__TYPES_H_

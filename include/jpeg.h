@@ -12,10 +12,20 @@ class JPEG {
 
     private:
 
-        FILE* fp;
+        // Vars
+        bytes data;
 
-        int parseSeg();
-        u16 readWord();
+        // Functions
+        int parse();
+        int parse_APP();
+        int parse_DQT();
+        int parse_SOF();
+        int parse_DHT();
+        int prase_SOS();
+
+        bytes readBytes(int count);
+        u8 readByte();
+        int bytesToInt(bytes byteArr);
 
 
     public:
