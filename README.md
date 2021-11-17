@@ -7,7 +7,7 @@ FILE TYPES
 
 - convert from jpeg to bmp
 
-# Instalation
+# Compile and Run
 
-    `curl https://www.github.com/linktothewebsite`
-    `make`
+    $ make
+    $ make run arg=fileName.jpg
