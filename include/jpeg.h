@@ -2,6 +2,7 @@
 #ifndef __JPEG_H_
 #define __JPEG_H_
 
+#include "types.h"
 #include <string>
 #include <vector>
 #include <map>
@@ -14,6 +15,7 @@ class JPEG {
         FILE* fp;
 
         int parseSeg();
+        u16 readWord();
 
 
     public:
