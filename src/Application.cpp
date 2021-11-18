@@ -43,7 +43,8 @@ Application::Application(bytes data) {
     else {
         this->ThumbnailData = bytes(data.begin() + 18, data.end());
     }
-    
+
+    printf("0x%X%X - APP0 - Application Data\n", data[0], data[1]);
     printf("\tIdentifier: %c%c%c%c%c\n", this->identifier[0], this->identifier[1], this->identifier[2], this->identifier[3], this->identifier[4]);
     printf("\tVersion: %d.%d\n", this->majorVersion, this->minorVersion);
     printf("\tUnit: %d\n", this->units);
