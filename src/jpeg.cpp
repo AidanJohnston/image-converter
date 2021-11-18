@@ -39,7 +39,7 @@ int JPEG::parse() {
     for(int i = 0; i < this->data.size(); i++) {
 
         if (this->data[i] == 0xFF) {
-            
+
             length = (data[i + 2] << 8) + (data[i + 3]);
 
             switch(this->data[i + 1]) {
@@ -50,6 +50,9 @@ int JPEG::parse() {
                 case 0xE0:
                     // pass from header to end of application frame data
                     this->application = Application(bytes(data.begin() + i, data.begin() + i + length));
+                    break;
+                case 0xDB:
+                    this->quantizationTables.push_back(QuantizationTable(bytes(data.begin() + i, data.begin() + i + length)));
                     break;
                 case 0xC0:
                     printf("Start of Frame 0\n");

@@ -4,6 +4,7 @@
 
 #include "types.h"
 #include "../include/Application.h"
+#include "../include/QuantizationTable.h"
 #include <string>
 #include <vector>
 #include <map>
@@ -18,6 +19,8 @@ class JPEG {
 
         // App Info
         Application application;
+        std::vector<QuantizationTable> quantizationTables;
+
 
         // Functions
         int parse();
