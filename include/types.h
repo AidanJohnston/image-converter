@@ -15,14 +15,26 @@ typedef signed int   s32;
 typedef std::vector<u8> bytes;
 
 
-// Start of Frame Types
-// nondifferential huffman-coding frames
+/* Start of Frame Types
+ * nondifferential huffman-coding frames
+ * Describes which DCT algorithm to use
+ *
+ * N: non
+ * DIFF: differential
+ * BASE: baseline
+ * DCT: Discrete cosine transformation
+ * EXT: extended
+ * LOSS: lossless
+ * PRO: progressive
+ * AR: arithmetic
+ */
+
 #define N_DIFF_BASE_DCT 0xC0
 #define N_DIFF_EXT_SEQ_DCT 0xC1
 #define N_DIFF_PRO_DCT 0xC2
 #define N_DIFF_LOSS 0xC3
 
-// differential huddman-coding frames
+// differential huffman-coding frames
 #define DIFF_SEQ_DCT 0xC5
 #define DIFF_PRO_DCT 0xC6
 #define DIFF_LOSS 0xC7
