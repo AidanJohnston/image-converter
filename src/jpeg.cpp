@@ -27,7 +27,6 @@ JPEG::JPEG(std::string filename) {
         this->data = bytes(length);
 
         fp.read(reinterpret_cast<char*>(this->data.data()), length);
-
         this->data.resize(fp.gcount());
 
         this->parse();

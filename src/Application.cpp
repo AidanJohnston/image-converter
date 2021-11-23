@@ -35,9 +35,8 @@ Application::Application(bytes data) {
     this->Ydensity = (data[14] << 8) + (data[15]);
     this->Xthumbnail = data[16];
     this->Ythumbnail = data[17];
-
     // Check if there is thumbnail data
-    if (this->Xthumbnail + this->Ythumbnail == 0) {
+    if (this->Xthumbnail || this->Ythumbnail == 0) {
         this->ThumbnailData = bytes();
     }
     else {
