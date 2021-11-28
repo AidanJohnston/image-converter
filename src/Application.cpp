@@ -26,7 +26,7 @@ Application::Application(bytes data) {
     *   Ythumbnail      1 byte   thumbnail vertical pixel count
     *   ThumbnailData   3n bytes thumbnail image (n = Xthumbnail * Ythumbnail)
     */
-
+    int length = (data[2] << 8) + (data[3]);
     this->identifier = bytes(data.begin() + 4, data.begin() + 8);
     this->majorVersion = data[9];
     this->minorVersion = data[10];
@@ -44,6 +44,7 @@ Application::Application(bytes data) {
     }
 
     printf("0x%X%X - APP0 - Application Data\n", data[0], data[1]);
+    printf("\tLength: %d bytes\n", length);
     printf("\tIdentifier: %c%c%c%c%c\n", this->identifier[0], this->identifier[1], this->identifier[2], this->identifier[3], this->identifier[4]);
     printf("\tVersion: %d.%d\n", this->majorVersion, this->minorVersion);
     printf("\tUnit: %d\n", this->units);
