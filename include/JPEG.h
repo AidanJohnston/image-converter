@@ -5,6 +5,8 @@
 #include "types.h"
 #include "../include/Application.h"
 #include "../include/QuantizationTable.h"
+#include "../include/StartOfFrame.h"
+#include "../include/HuffmanTable.h"
 #include <string>
 #include <vector>
 #include <map>
@@ -20,6 +22,8 @@ class JPEG {
         // App Info
         Application application;
         std::vector<QuantizationTable> quantizationTables;
+        StartOfFrame startOfFrame;
+        std::vector<HuffmanTable> huffmanTables;
 
 
         // Functions

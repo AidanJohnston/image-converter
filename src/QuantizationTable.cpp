@@ -32,5 +32,5 @@ QuantizationTable::QuantizationTable(bytes data) {
     else 
         printf("(luminance)\n");
 
-    printf("\tTable %dx%d\n", this->n, this->n);
+    printf("\tTable %dx%d\n", (int)sqrt(this->n), (int)sqrt(this->n));
 }
