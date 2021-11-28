@@ -56,15 +56,6 @@ int JPEG::parse() {
                 case 0xC0:
                     this->startOfFrame = StartOfFrame(bytes(data.begin() + i, data.begin() + i + length));
                     break;
-                case 0xC1:
-                    printf("Start of Frame 1\n");
-                    break;
-                case 0xC2:
-                    printf("Start of Frame 2\n");
-                    break;
-                case 0xC3:
-                    printf("Start of Frame 3\n");
-                    break;
                 case 0xC4:
                     this->huffmanTables.push_back(HuffmanTable(bytes(data.begin() + i, data.begin() + i + length)));
             }

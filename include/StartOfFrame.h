@@ -3,16 +3,23 @@
 
 #include "types.h"
 
+struct componet{
+    int id;
+    int hSample;
+    int vSample;
+    int quantizationDest;
+};
+
 class StartOfFrame {
 
 
     private:
         int length;
         int precision;
-        int lineNumber;
-        int samples;
-        int components;
-
+        int Y;
+        int X;
+        int numComponent;
+        std::vector<componet> componets;
 
     public:
         StartOfFrame(bytes data);
