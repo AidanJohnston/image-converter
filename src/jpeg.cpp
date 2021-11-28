@@ -54,12 +54,30 @@ int JPEG::parse() {
                     this->quantizationTables.push_back(QuantizationTable(bytes(data.begin() + i, data.begin() + i + length)));
                     break;
                 case 0xC0:
+                case 0xC2:
                     this->startOfFrame = StartOfFrame(bytes(data.begin() + i, data.begin() + i + length));
                     break;
                 case 0xC4:
                     this->huffmanTables.push_back(HuffmanTable(bytes(data.begin() + i, data.begin() + i + length)));
+                    break;
+                case 0xDA:
+                    this->startOfScan = StartOfScan(bytes(data.begin() + i, data.begin() + i + length));
+                    break;
+                case 0xD0:
+                case 0xD1:
+                case 0xD2:
+                case 0xD3:
+                case 0xD4:
+                case 0xD5:
+                case 0xD6:
+                case 0xD7:
+                    printf("0x%X%X - Restart\n", data[i], data[i + 1]);
+                    break;
+                case 0xD9:
+                    printf("0xFFD9 - EOI - End of Image\n");
+                    break;
             }
-    }
+        }
     }
     return 0;
 }
