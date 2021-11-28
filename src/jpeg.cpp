@@ -54,7 +54,7 @@ int JPEG::parse() {
                     this->quantizationTables.push_back(QuantizationTable(bytes(data.begin() + i, data.begin() + i + length)));
                     break;
                 case 0xC0:
-                    printf("Start of Frame 0\n");
+                    this->startOfFrame = StartOfFrame(bytes(data.begin() + i, data.begin() + i + length));
                     break;
                 case 0xC1:
                     printf("Start of Frame 1\n");
@@ -66,8 +66,7 @@ int JPEG::parse() {
                     printf("Start of Frame 3\n");
                     break;
                 case 0xC4:
-                    printf("Define Huffman Table\n");
-                    break;
+                    this->huffmanTables.push_back(HuffmanTable(bytes(data.begin() + i, data.begin() + i + length)));
             }
     }
     }
