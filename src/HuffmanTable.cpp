@@ -15,8 +15,10 @@ HuffmanTable::HuffmanTable(bytes data) {
     // shift right 4 to get only the first 4 most siginifcant bits
     this->destinationID = data[4] >> 4; 
 
+    int elements = 0;
     // 16 bytes of lengths
     for(int i = 5; i < 21; i++) {
+        elements += data[i];
         this->lengths.push_back(data[i]);
     }
 
@@ -39,4 +41,6 @@ HuffmanTable::HuffmanTable(bytes data) {
             printf(", ");
     }
     printf(")\n");
+
+    printf("\tElements: %d\n", elements);
 }
