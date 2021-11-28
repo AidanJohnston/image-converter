@@ -9,12 +9,12 @@ unsigned char* createBMFHeader(int height, int stride);
 unsigned char* createBMIHeader(int height, int width);
 
 
-int main (){
+/*int main (){
     
     unsigned char image[height] [width] [BYTES_PER_PIXEL];
     char* imageFileName = (char*) "bitmapImage.bmp";
 
-}
+}*/
 
 
 unsigned char* createBMFHeader (int height, int stride){
@@ -66,3 +66,4 @@ unsigned char* createBMIHeader (int height, int width){
     infoHeader[14] = (unsigned char)(BYTES_PER_PIXEL*8);
 
     return infoHeader;
+}
