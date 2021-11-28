@@ -19,7 +19,7 @@ QuantizationTable::QuantizationTable(bytes data) {
      */
 
     int length = (data[2] << 8) + (data[3]);
-    this->n = length - 3;
+    this->n = (int)sqrt(length - 3);
 
     this->destination = data[4];
     this->table = bytes(data.begin() + 5, data.end());
@@ -32,5 +32,15 @@ QuantizationTable::QuantizationTable(bytes data) {
     else 
         printf("(luminance)\n");
 
-    printf("\tTable %dx%d\n", (int)sqrt(this->n), (int)sqrt(this->n));
+    printf("\tTable %dx%d\n", this->n, this->n);
+    
+    /* Print the table
+    for(int i = 0; i < n; i++) {
+        printf("\t");
+        for(int j = 0; j < n; j++) {
+            printf("%d\t", this->table[i*n + j]);
+        }
+        printf("\n");
+    }
+    */
 }
