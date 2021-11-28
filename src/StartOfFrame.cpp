@@ -26,7 +26,7 @@ StartOfFrame::StartOfFrame(bytes data) {
     }
 
 
-    printf("0x%X%X - SOF0 - Start of Frame 0\n", data[0], data[1]);
+    printf("0x%X%X - SOF - Start of Frame %d\n", data[0], data[1], data[1] && 0x0F);
     printf("\tLength: %d bytes\n", this->length);
     printf("\tPrecision: %d\n", this->precision);
     printf("\tImage Dimensions (w x h): (%d px x %d px)\n", this->X, this->Y);
