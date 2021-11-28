@@ -3,10 +3,10 @@
 #define __JPEG_H_
 
 #include "types.h"
-#include "../include/Application.h"
-#include "../include/QuantizationTable.h"
-#include "../include/StartOfFrame.h"
-#include "../include/HuffmanTable.h"
+#include "Application.h"
+#include "QuantizationTable.h"
+#include "StartOfFrame.h"
+#include "HuffmanTable.h"
 #include <string>
 #include <vector>
 #include <map>

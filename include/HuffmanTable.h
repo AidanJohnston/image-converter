@@ -1,7 +1,8 @@
-#ifndef __JPEG_H_
-#define __JPEG_H_
+#ifndef __HUFFMANTABLE_H_
+#define __HUFFMANTABLE_H_
 
 #include "types.h"
+#include "vector"
 
 class HuffmanTable {
 
@@ -10,9 +11,11 @@ class HuffmanTable {
         int tableClass;
         int destinationID;
         int huffCount;
+        std::vector<int> lengths;
 
     public:
         HuffmanTable(bytes data);
+        HuffmanTable() = default;
 };
 
 #endif
