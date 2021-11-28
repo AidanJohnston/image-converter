@@ -25,7 +25,7 @@ QuantizationTable::QuantizationTable(bytes data) {
     this->table = bytes(data.begin() + 5, data.end());
 
     printf("0x%X%X - DQT - Quantization Table\n", data[0], data[1]);
-
+    printf("\tLength: %d bytes\n", length);
     printf("\tDestination %d ", this->destination);
     if (this->destination) 
         printf("(chrominance)\n");

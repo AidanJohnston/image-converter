@@ -7,7 +7,7 @@
 
 HuffmanTable::HuffmanTable(bytes data) {
 
-    this->length = (data[2] << 8 + data[3]);
+    this->length = (data[2] << 8) + (data[3]);
 
     // only get first 4 least signigicant bits
     this->tableClass = data[4] && 0x0F;
@@ -21,7 +21,7 @@ HuffmanTable::HuffmanTable(bytes data) {
     }
 
     printf("0x%X%X - DHT - Huffman Table\n", data[0], data[1]);
-    printf("\tLength: %d\n", this->length);
+    printf("\tLength: %d bytes\n", this->length);
     printf("\tTable Class: %d ", this->tableClass);
 
     if(this->tableClass)
