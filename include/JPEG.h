@@ -7,6 +7,7 @@
 #include "QuantizationTable.h"
 #include "StartOfFrame.h"
 #include "HuffmanTable.h"
+#include "StartOfScan.h"
 #include <string>
 #include <vector>
 #include <map>
@@ -24,6 +25,8 @@ class JPEG {
         std::vector<QuantizationTable> quantizationTables;
         StartOfFrame startOfFrame;
         std::vector<HuffmanTable> huffmanTables;
+        StartOfScan startOfScan;
+        bytes ecs;
 
 
         // Functions
