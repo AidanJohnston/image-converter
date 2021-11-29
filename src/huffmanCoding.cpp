@@ -49,14 +49,14 @@ unitNode* newNode(char currentCharacter, int numberOfEachChar, unitNode* left, u
 
 void createTree(string input); // function declaration
 
-
+/* commnet main so it complies
 int main() {
 	string input = "I am currently testing?"; // testing purposes as we don't have inputs yet
 		createTree(input); // call the create tree function which converts the string 
 
 	
 	return 0; //return for main. 
-}
+}*/
 
 void encodeHuffman(unitNode* rootOfHuffmanTree, string passedString, unordered_map<char, string> &huffmanEncoding) { // encode function
 	if (rootOfHuffmanTree == nullptr) { // if root is null, nothing left to encode

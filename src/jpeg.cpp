@@ -34,7 +34,9 @@ JPEG::JPEG(std::string filename) {
 }
 
 int JPEG::parse() {
+
     int length = 0;
+
     for(int i = 0; i < this->data.size(); i++) {
 
         if (this->data[i] == 0xFF) {
@@ -62,6 +64,7 @@ int JPEG::parse() {
                     break;
                 case 0xDA:
                     this->startOfScan = StartOfScan(bytes(data.begin() + i, data.begin() + i + length));
+                    this->ecs = this->removeFF00(bytes(data.begin() + i + length, data.end() - 2));
                     break;
                 case 0xD0:
                 case 0xD1:
@@ -79,5 +82,19 @@ int JPEG::parse() {
             }
         }
     }
+    printf("image Data length: %d\n", (int)this->ecs.size());
     return 0;
+}
+
+bytes JPEG::removeFF00(bytes data) {
+    bytes temp;
+
+    for (int i = 0; i < data.size(); i++) {
+        temp.push_back(data[i]);
+
+        // skip 00 after a FF
+        if(data[i] == 0xFF && data[i + 1])
+            i++;
+    }
+    return temp;
 }

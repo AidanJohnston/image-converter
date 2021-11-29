@@ -31,10 +31,12 @@ class JPEG {
 
         // Functions
         int parse();
+        bytes removeFF00(bytes data);
 
     public:
 
         JPEG(std::string);
+        JPEG() = default;
 
 };
 #endif
